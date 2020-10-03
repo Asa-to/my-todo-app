@@ -13,21 +13,21 @@ class TodoViewer extends React.Component {
 
     getList(){
         return (
-            <ul class="list-group">
-                {this.props.tasks.map((item) => {
+            <ul className="list-group">
+                {this.props.tasks.map((item, index) => {
                         // idがついていなければ削除ボタンを無効にする
-                        if(item['id']){
+                        if(item.id){
                             return(
-                                <li key={item['id']} class="d-flex flex-row justify-content-around">
-                                    <span class='list-group-item w-100 text-truncate'>{item['name']}</span>
-                                    <button type='button' id={item['id']} class='btn btn-outline-primary text-nowrap' onClick={this.handleClick}>削除</button>
+                                <li key={index} className="d-flex flex-row justify-content-around">
+                                    <span className='list-group-item w-100 text-truncate'>{item['name']}</span>
+                                    <button type='button' id={item.id} className='btn btn-outline-primary text-nowrap' onClick={this.handleClick}>削除</button>
                                 </li>
                             );
                         }else {
                             return(
-                                <li key={item['id']} class="d-flex flex-row justify-content-around">
-                                    <span class='list-group-item w-100 text-truncate'>{item['name']}</span>
-                                    <button type='button' id={item['id']} class='btn btn-outline-primary text-nowrap' disabled onClick={this.handleClick}>削除</button>
+                                <li key={index} className="d-flex flex-row justify-content-around">
+                                    <span className='list-group-item w-100 text-truncate'>{item['name']}</span>
+                                    <button type='button' id={item.id} className='btn btn-outline-primary text-nowrap' disabled onClick={this.handleClick}>削除</button>
                                 </li>
                             );
                         }

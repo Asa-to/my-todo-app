@@ -31,7 +31,6 @@ class TodoManager extends React.Component {
         .then(response => response.json())
         .then(result => {
             newTasks[newTasks.length-1].id = JSON.parse(result)[0]['LAST_INSERT_ID()'];
-            console.log(JSON.parse(result)[0])
             this.setState({tasks: newTasks});
         });
     }
@@ -65,9 +64,9 @@ class TodoManager extends React.Component {
 
     render() {
         return (
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Todo App</h5>
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title text-center">Todo App</h5>
                     <TodoAdder sendTask={this.addTask}/>
                     <TodoViewer tasks={this.state.tasks} removeTask={this.removeTask}/>
                 </div>

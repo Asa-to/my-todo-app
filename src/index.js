@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TodoManager from './todoManager';
 
 const element = (
-    <div class='container py-5'>
+    <div className='container py-5'>
         <TodoManager />
     </div>
 )

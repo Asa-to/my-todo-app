@@ -6,8 +6,8 @@ module.exports = {
         ignored: /node_modules/,
     },
     // mode設定
-    // mode: 'development',
-    mode: 'production',
+    mode: 'development',
+    // mode: 'production',
     // エントリーポイント
     entry: [
         './src/index.js',
