@@ -1,13 +1,13 @@
 // 複数指定する際は配列[]で指定する
 module.exports = {
-    // watchモードをオンにして、対象外のファイルを記述する
-    watch: true,
+    // watch mode
+    watch: false,
     watchOptions: {
         ignored: /node_modules/,
     },
     // mode設定
-    mode: 'development',
-    // mode: 'production',
+    // mode: 'development',
+    mode: 'production',
     // エントリーポイント
     entry: [
         './src/index.js',
