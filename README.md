@@ -1,4 +1,4 @@
-[デモ](https://desolate-oasis-96913.herokuapp.com/)
+[デモ](https://asato-todo.herokuapp.com/)
 
 # いい雰囲気のTODOアプリを作る
 覚えたての技術たちを使って、とりあえず人に見せられるレベルの何かを作ろうと思った時、まあ初めだしTODOかなと思って作成した次第です。今回使いたかった技術は以下
