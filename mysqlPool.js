@@ -3,7 +3,8 @@ const mysql = require('mysql');
 const mysqlPool = mysql.createPool({
     host: 'us-cdbr-east-02.cleardb.com',
     user: 'b0bda3f708b799',
-    password: '5a609f5b'
+    password: '5a609f5b',
+    multipleStatements: true
 });
 
 mysqlPool.getConnection((err) => {

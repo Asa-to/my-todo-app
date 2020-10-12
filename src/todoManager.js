@@ -9,7 +9,6 @@ class TodoManager extends React.Component {
         this.updateTasks = this.updateTasks.bind(this);
         this.addTask = this.addTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
-        this.mergeLastInsertID = this.mergeLastInsertID.bind(this);
         this.updateTasks();
     }
 
@@ -23,18 +22,6 @@ class TodoManager extends React.Component {
         });
     }
 
-    mergeLastInsertID() {
-        const newTasks = this.state.tasks;
-        fetch(`/__api/lastID`, {
-            method: 'GET'
-        })
-        .then(response => response.json())
-        .then(result => {
-            newTasks[newTasks.length-1].id = JSON.parse(result)[0]['LAST_INSERT_ID()'];
-            this.setState({tasks: newTasks});
-        });
-    }
-
     addTask(task){
         if(task){
             const newTasks = this.state.tasks;
@@ -44,8 +31,9 @@ class TodoManager extends React.Component {
                 method: 'GET'
             })
             .then(response => response.json())
-            .then(() => {
-                this.mergeLastInsertID();
+            .then((result) => {
+                newTasks[newTasks.length-1].id = JSON.parse(result).lastID;
+                this.setState({task: newTasks});
             });
         }
     }

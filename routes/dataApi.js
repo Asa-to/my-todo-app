@@ -12,10 +12,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/add', (req, res, next) => {
-    const query = `INSERT INTO heroku_f84983e17ae6384.todoList(name) VALUE(?);`;
+    const query = `INSERT INTO heroku_f84983e17ae6384.todoList(name) VALUE(?); SELECT LAST_INSERT_ID() AS lastID;`;
     mysqlPool.query(query, [req.query.name], (err, result, fields) => {
+        console.log(result[1][0].lastID);
         if(err) throw err;
-        res.json(JSON.stringify(result));
+        res.json(JSON.stringify(result[1][0]));
     });
 });
 
