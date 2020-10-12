@@ -16,21 +16,12 @@ class TodoViewer extends React.Component {
             <ul className="list-group">
                 {this.props.tasks.map((item, index) => {
                         // idがついていなければ削除ボタンを無効にする
-                        if(item.id){
-                            return(
-                                <li key={index} className="d-flex flex-row justify-content-around">
-                                    <span className='list-group-item w-100 text-truncate'>{item['name']}</span>
-                                    <button type='button' id={item.id} className='btn btn-outline-primary text-nowrap' onClick={this.handleClick}>削除</button>
-                                </li>
-                            );
-                        }else {
-                            return(
-                                <li key={index} className="d-flex flex-row justify-content-around">
-                                    <span className='list-group-item w-100 text-truncate'>{item['name']}</span>
-                                    <button type='button' id={item.id} className='btn btn-outline-primary text-nowrap' disabled onClick={this.handleClick}>削除</button>
-                                </li>
-                            );
-                        }
+                        return(
+                            <li key={index} className="d-flex flex-row justify-content-around">
+                                <span className='list-group-item w-100 text-truncate'>{item['name']}</span>
+                                <button type='button' id={item.id} className='btn btn-outline-primary text-nowrap' disabled={!item.id} onClick={this.handleClick}>削除</button>
+                            </li>
+                        );
                     }
                 )}
             </ul>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-const abc = (event) => { event.preventDefault(); alert('unko'); return false; }
-
 class TodoAdder extends React.Component {
     constructor(props) {
         super(props);
@@ -11,12 +9,13 @@ class TodoAdder extends React.Component {
 
     handleClick() {
         this.props.sendTask(document.getElementById('newTask').value);
-        document.getElementById('newTask').value = '';
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.handleClick();
+        if(!this.props.adding) {
+            this.handleClick();
+        }
         return false;
     } 
 
@@ -24,7 +23,7 @@ class TodoAdder extends React.Component {
         return (
             <form className='form-group d-flex flex-row justify-content-around' onSubmit={this.handleSubmit}>
                     <input type='text' className='form-control form-control-lg' placeholder='Enter your todo' id='newTask'></input>
-                    <button type='button' className='btn btn-outline-primary text-nowrap' onClick={this.handleClick}>追加</button>
+                    <button type='button' id="adder" className='btn btn-outline-primary text-nowrap' disabled={this.props.adding} onClick={this.handleClick}>追加</button>
             </form>
         )
     }

@@ -5,7 +5,7 @@ import TodoViewer from './todoViewer';
 class TodoManager extends React.Component {
     constructor(props){
         super(props);
-        this.state = {tasks: []};
+        this.state = {tasks: [], adding: false};
         this.updateTasks = this.updateTasks.bind(this);
         this.addTask = this.addTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
@@ -24,6 +24,8 @@ class TodoManager extends React.Component {
 
     addTask(task){
         if(task){
+            this.setState({adding: true});
+            document.getElementById('newTask').value = '';
             const newTasks = this.state.tasks;
             newTasks.push({id: '', name: task});
             this.setState({task: newTasks});
@@ -33,7 +35,7 @@ class TodoManager extends React.Component {
             .then(response => response.json())
             .then((result) => {
                 newTasks[newTasks.length-1].id = JSON.parse(result).lastID;
-                this.setState({task: newTasks});
+                this.setState({task: newTasks, adding: false});
             });
         }
     }
@@ -55,7 +57,7 @@ class TodoManager extends React.Component {
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title text-center">Todo App</h5>
-                    <TodoAdder sendTask={this.addTask}/>
+                    <TodoAdder sendTask={this.addTask} adding={this.state.adding}/>
                     <TodoViewer tasks={this.state.tasks} removeTask={this.removeTask}/>
                 </div>
             </div>
