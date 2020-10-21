@@ -29,8 +29,12 @@ class TodoManager extends React.Component {
             const newTasks = this.state.tasks;
             newTasks.push({id: '', name: task});
             this.setState({task: newTasks});
-            fetch(`/__api/add?name=${task}`,{
-                method: 'GET'
+            console.log((newTasks));
+            console.log(JSON.stringify({'name': task}));
+            fetch('/__api',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({'name': task})
             })
             .then(response => response.json())
             .then((result) => {
@@ -41,8 +45,10 @@ class TodoManager extends React.Component {
     }
     
     removeTask(id){
-        fetch(`/__api/delete?id=${id}`, {
-            method: 'GET'
+        fetch('/__api/', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({id})
         });
         const tasks = this.state.tasks;
         const index = this.state.tasks.findIndex(element => element.id.toString() === id);

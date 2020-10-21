@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "build-dev": "webpack --config webpack.dev.config.js",
     "build": "webpack"
   },
   "dependencies": {
@@ -13,6 +14,7 @@
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
     "cookie-parser": "~1.4.4",
     "css-loader": "^4.3.0",
